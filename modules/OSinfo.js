@@ -1,6 +1,6 @@
-var logit = require('../modules/logit');
+var logit = require('logit');
 var os = require('os');
-var timeConverter = require('../modules/timeConverter');
+var timeConverter = require('timeConverter');
 
 function getOSinfo() {
     var type = os.type();

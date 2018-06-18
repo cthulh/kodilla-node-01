@@ -1,4 +1,4 @@
-var logit = require('../modules/logit');
+var logit = require('logit');
 
 function processInfo() {
   logit('----------------------------------\n\n');
@@ -7,7 +7,7 @@ function processInfo() {
   logit('Node version: ');
   logit(process.versions.node);
   logit('');
-  
+
 }
 
 module.exports = processInfo;

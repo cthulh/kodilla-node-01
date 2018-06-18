@@ -1,8 +1,8 @@
 var os = require('os');
-var logit = require('../modules/logit');
-var OSinfo = require('../modules/OSinfo');
-var processInfo = require('../modules/processInfo');
-var timeConverter = require('../modules/timeConverter');
+var logit = require('./modules/logit');
+var OSinfo = require('./modules/OSinfo');
+var processInfo = require('./modules/processInfo');
+var timeConverter = require('./modules/timeConverter');
 
 processInfo();
 
