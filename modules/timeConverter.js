@@ -2,7 +2,7 @@ function timeConverter(time){
 
     var hrs = Math.floor(time / 3600);
     var mins = Math.floor((time % 3600) / 60);
-    var secs = time % 60;
+    var secs = (time % 60).toFixed(0);
 
     var output = "";
 
