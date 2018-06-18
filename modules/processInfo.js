@@ -7,7 +7,7 @@ function processInfo() {
   logit('Node version: ');
   logit(process.versions.node);
   logit('');
-  logit('Enter instruction: ');
+  
 }
 
 module.exports = processInfo;

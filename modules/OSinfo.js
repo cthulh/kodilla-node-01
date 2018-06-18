@@ -1,5 +1,6 @@
 var logit = require('../modules/logit');
 var os = require('os');
+var timeConverter = require('../modules/timeConverter');
 
 function getOSinfo() {
     var type = os.type();
@@ -10,7 +11,7 @@ function getOSinfo() {
     }
     var release = os.release();
     var cpu = os.cpus()[0].model;
-    var uptime = os.uptime();
+    var uptime = timeConverter(os.uptime());
     var userInfo = os.userInfo();
     logit('----------------------------------\n\n');
     logit('System:', type);
