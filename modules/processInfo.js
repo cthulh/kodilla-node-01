@@ -1,4 +1,4 @@
-var logit = require('logit');
+var logit = require('./logit');
 
 function processInfo() {
   logit('----------------------------------\n\n');
