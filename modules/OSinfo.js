@@ -1,6 +1,7 @@
 var logit = require('./logit');
 var os = require('os');
 var timeConverter = require('./timeConverter');
+var colors = require('colors');
 
 function getOSinfo() {
     var type = os.type();
@@ -10,16 +11,20 @@ function getOSinfo() {
         type = 'Windows';
     }
     var release = os.release();
+    logit(release);
     var cpu = os.cpus()[0].model;
+    logit(cpu);
     var uptime = timeConverter(os.uptime());
+    logit(uptime);
     var userInfo = os.userInfo();
+    logit(userInfo);
     logit('----------------------------------\n\n');
-    logit('System:', type);
-    logit('Release:', release);
-    logit('CPU model:', cpu);
-    logit('Uptime: ~', (uptime / 60).toFixed(0), 'min');
-    logit('User name:', userInfo.username);
-    logit('Home dir:', userInfo.homedir);
+    logit('System: '.gray + type);
+    logit('Release: '.red + release);
+    logit('CPU model: '.magenta + cpu);
+    logit('Uptime: ~'.green + uptime);
+    logit('User name: '.yellow + userInfo.username);
+    logit('Home dir: '.grey + userInfo.homedir);
 }
 
 module.exports = {
