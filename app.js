@@ -5,6 +5,7 @@ var processInfo = require('./modules/processInfo');
 var timeConverter = require('./modules/timeConverter');
 var fs = require('fs');
 var StatMode = require('stat-mode');
+var http = require('http');
 
 processInfo();
 
@@ -44,6 +45,24 @@ process.stdin.on('readable', function() {
               });
             });
           });
+          break;
+        case '/server':
+          var server = http.createServer();
+          server.on('request', (request, response) => {
+            response.setHeader('Content-Type', 'text/html; charset=utf-8');
+            if (request.method === 'GET' && request.url === '/') {
+              fs.readFile('./index.html', 'utf-8', (err, data) => {
+                response.write(data);
+                response.end();
+              });
+            } else {
+              response.statusCode = 404;
+              response.write('<h1>404: Error, request unknown.</h1>');
+              response.end();
+            }
+          });
+          server.listen(9000);
+          logit('\nResponse ready on localhost:9000\n');
           break;
         default:
           logit('Wrong instruction!');
