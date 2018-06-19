@@ -1,4 +1,6 @@
+dirToTxt.js
 logit.js
 OSinfo.js
 processInfo.js
+server.js
 timeConverter.js

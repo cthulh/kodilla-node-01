@@ -1,4 +1,4 @@
-var logit = require('./modules/logit');
+var logit = require('./logit');
 var fs = require('fs');
 
 function dirToTxt() {
