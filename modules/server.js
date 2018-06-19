@@ -3,6 +3,7 @@ var fs = require('fs');
 var logit = require('./logit');
 
 function getServer() {
+  var port = 9000;
   var server = http.createServer();
   server.on('request', (request, response) => {
     response.setHeader('Content-Type', 'text/html; charset=utf-8');
@@ -17,8 +18,8 @@ function getServer() {
       response.end();
     }
   });
-  server.listen(9000);
-  logit('\nResponse ready on localhost:9000\n');
+  server.listen(port);
+  logit('\nResponse ready on localhost:' + port + '\n');
 }
 
 module.exports = getServer;
