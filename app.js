@@ -3,6 +3,8 @@ var logit = require('./modules/logit');
 var OSinfo = require('./modules/OSinfo');
 var processInfo = require('./modules/processInfo');
 var timeConverter = require('./modules/timeConverter');
+var fs = require('fs');
+var StatMode = require('stat-mode');
 
 processInfo();
 
@@ -24,6 +26,24 @@ process.stdin.on('readable', function() {
           break;
         case '/getOSinfo':
           OSinfo.print();
+          break;
+        case '/img':
+          fs.stat('./img/cat.jpg', (err, stats) => {
+            var statMode = new StatMode(stats);
+            logit(statMode.toString());
+          });
+          break;
+        case '/dirToTxt':
+          fs.readdir('./modules/', (err, files) => {
+            var listOfFiles = '';
+            files.forEach( file => listOfFiles += file + '\n');
+            fs.writeFile('./txt.txt', listOfFiles, function(){
+              fs.readFile('./txt.txt', 'utf-8', (err, data) => {
+                logit('Files: ');
+                logit(data);
+              });
+            });
+          });
           break;
         default:
           logit('Wrong instruction!');
